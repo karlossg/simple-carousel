@@ -29,20 +29,25 @@ function activeDot() {
   $("#dot" + activeDotId).addClass("active");
 }
 
-function showSlide(id) {
+// function showSlide(id) {
+//   $("dot").click(function() {
+//     ten move 
+//   })
+// }
 
+function moveArrow(margin, side) {
+  event.preventDefault();
+  carousel(margin, side);
 }
+// $(".arrow-right").click(function(event) {
+//   event.preventDefault();
+//   carousel(-400, "right");
+// })
 
-
-$(".arrow-right").click(function(event) {
-  event.preventDefault();
-  carousel(-400, "right");
-})
-
-$(".arrow-left").click(function(event) {
-  event.preventDefault();
-  carousel(0, "left");
-})
+// $(".arrow-left").click(function(event) {
+//   event.preventDefault();
+//   carousel(0, "left");
+// })
 
 setInterval(() => carousel(-400, "right"), 3000);
 
