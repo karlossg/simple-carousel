@@ -30,8 +30,12 @@ function activeDot() {
 }
 
 // function showSlide(id) {
-//   $("dot").click(function() {
-//     ten move 
+//   $(".dot").click(function(e) {
+//     let clickedElemenId = e.target.id
+//     let itemToShow = $("#" + clickedElemenId[3])
+//     let firstItem = carouselList.find("li:first");
+//     firstItem.before(itemToShow);
+//     activeDot();
 //   })
 // }
 
@@ -39,16 +43,7 @@ function moveArrow(margin, side) {
   event.preventDefault();
   carousel(margin, side);
 }
-// $(".arrow-right").click(function(event) {
-//   event.preventDefault();
-//   carousel(-400, "right");
-// })
 
-// $(".arrow-left").click(function(event) {
-//   event.preventDefault();
-//   carousel(0, "left");
-// })
-
-setInterval(() => carousel(-400, "right"), 3000);
+// setInterval(() => carousel(-400, "right"), 3000);
 
 
