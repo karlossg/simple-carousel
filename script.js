@@ -1,30 +1,32 @@
 const carouselList = $("#carousel ul");
 
-const moveFirstSlide = function() {
-  let firstItem = carouselList.find("li:last");
-  let lastItem = carouselList.find("li:first");
-  lastItem.before(firstItem)
-  carouselList.css({marginLeft:-400});
+function moveFirstSlide(side) {
+  let firstItem = carouselList.find("li:first");
+  let lastItem = carouselList.find("li:last");
+  if (side === "right") {
+  lastItem.after(firstItem);
+  carouselList.css({marginLeft: 0});
+  } else {
+    firstItem.before(lastItem)
+    carouselList.css({marginLeft:-400});
+  }
 };
 
-const carousel = function(direction="right") {
-  carouselList.animate({'marginLeft': 0}, 500, moveFirstSlide);
-  console.log(carousel);
+function carousel(margin, side) {
+  carouselList.animate({'marginLeft': margin}, 500, moveFirstSlide(side));
 }
-// const moveToLeft = () => carouselList.animate({'marginRight':400}, 500, moveFirstSlide);
 
 $(".arrow-right").click(function(event) {
   event.preventDefault();
-  carousel();
+  carousel(-400, "right");
 })
 
 $(".arrow-left").click(function(event) {
   event.preventDefault();
-  carousel("left");
+  carousel(0, "left");
 })
 
-
-setInterval(carousel, 3000);
+setInterval(() => carousel(-400, "right"), 3000);
 
 
 
