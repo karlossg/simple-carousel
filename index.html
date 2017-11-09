@@ -12,14 +12,25 @@
 
   <div id="carousel">
     <ul>
-      <li><img src="1.jpg" alt=""></li>
-      <li><img src="2.jpg" alt=""></li>
-      <li><img src="3.jpg" alt=""></li>
-      <li><img src="4.jpg" alt=""></li>
-      <li><img src="5.jpg" alt=""></li>
+      <li id="1"><img src="1.jpg" alt=""></li>
+      <li id="2"><img src="2.jpg" alt=""></li>
+      <li id="3"><img src="3.jpg" alt=""></li>
+      <li id="4"><img src="4.jpg" alt=""></li>
+      <li id="5"><img src="5.jpg" alt=""></li>
     </ul>
     <div class="arrow arrow-left"></div>
     <div class="arrow arrow-right"></div>
+    
+  </div>
+
+  <div class="dots" id="dotsList" style="text-align: center;">
+    <ul>
+    <li id="dot1" class="dot active" onclick="showSlide(1)"></li> 
+    <li id="dot2" class="dot" onclick="showSlide(2)"></li> 
+    <li id="dot3" class="dot" onclick="showSlide(3)"></li> 
+    <li id="dot4" class="dot" onclick="showSlide(4)"></li> 
+    <li id="dot5" class="dot" onclick="showSlide(5)"></li> 
+  </ul>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
