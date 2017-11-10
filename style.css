@@ -1,39 +1,45 @@
-img {
-  width: 400px;
-  height: 300px;
+* {
   padding: 0;
+  margin: 0;
+  
 }
-
 
 #carousel {
-  border: 1px solid #000;
   width: 400px;
-  height: 300px;
+  overflow-y: auto;
   overflow: hidden;
-  margin: 0 auto;
+  height: 300px;
+  margin: 50px auto;
+  border: 1px solid #000;
+  /*position:relative;*/
 }
 
-ul {
-  list-style-type: none;
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
+#carousel ul li {
+  position: relative;
+}
+
+#carousel ul {
+  list-style: none;
   width: 2000px;
+  height: 300px;
+  position: relative;
 }
-ul>li {
-  overflow: hidden;
-  padding: 0;
-  margin: 0;
-  width: 400px;
+
+#carousel ul li img {
+  position: relative;
   float: left;
+  width: 400px;
+  height: 300px;
+  padding: 0;
 }
+
 /* arrows */
 
 .arrow {
   width: 20px;
   height: 20px;
   position:absolute;
-  top:150px;
+  top:200px;
   z-index:3;
   border-top:3px solid #fff;
   border-right:3px solid #fff;
@@ -59,7 +65,7 @@ ul>li {
 .dots {
   position:absolute;
   left: 790px;
-  top: 280px;
+  top: 320px;
   z-index:4;
 }
 

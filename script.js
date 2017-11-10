@@ -1,86 +1,46 @@
-const l = console.log;
+let timer = setInterval(function() {
+  $('#right').trigger('click');
+}, 3500);
 
-const carouselList = $("#carousel ul");
-const dotList = $("#dotsList li");
 
-
-// function moveFirstSlide(side) {
-//   let firstItem = carouselList.find("li:first");
-//   let lastItem = carouselList.find("li:last");
-//   if (side === "right") {
-//   lastItem.after(firstItem);
-//   carouselList.css({marginLeft: 0});
-//   activeDot();
-//   } else {
-//     lastItem.css({marginLeft:0});
-//     firstItem.before(lastItem)
-
-//     activeDot();
-//   }
-// };
-
-// function carousel(margin, side) {
-//   carouselList.animate({'marginLeft': margin}, 500, () => moveFirstSlide(side));
-// }
-
-function removeActiveDot() {
-  $('#dotsList .active').removeClass("active");;
+function slide(target) {
+  $("#dots-list li").removeClass("active").eq(target).addClass("active");
+  $("#carousel ul li").animate({
+    'right': +400 * target + 'px'
+  }, 450);
 }
 
-
-function addActiveDot() {
-  let $activeItem = $('#photo-list li:first');
-  let $activeDotId = $activeItem.attr("id");
-  $("#dot" + $activeDotId).addClass("active");
+function clearInt() {
+  clearInterval(timer);
+  timer = setInterval(function() {
+    $('#right').trigger('click');
+  }, 3500);
 }
 
-
-function moveLeft() {
-  removeActiveDot();
-  setTimeout(addActiveDot, 1000);
-  const $last = $('#photo-list li:last');
-  $last.remove().css({
-    'margin-left': '-400px'
-  });
-  $('#photo-list li:first').before($last);
-  $last.animate({
-    'margin-left': '0px'
-  }, 800);
-  
-};
+$("#dots-list li").click(function() {
+  const target = $(this).index();
+  slide(target);
+  clearInt()
+});
 
 
-function moveRight() {
-  removeActiveDot();
-  setTimeout(addActiveDot, 1000);
-  const $first = $('#photo-list li:first');
-  $first.animate({
-    'margin-left': '-410px'
-  }, 800, function() {
-    $first.remove().css({
-      'margin-left': '0px'
-    });
-    $('#photo-list li:last').after($first);
-  });
-  
-};
+$("#right").click(function() {
+  let target = $("#dots-list li.active").index();
+    if (target === $("#dots-list li").length - 1) {
+    target = -1;
+  }
+  target = target + 1
+  slide(target);
+  clearInt()
+});
 
-// function showSlide(id) {
-//   $(".dot").click(function(e) {
-//     let clickedElemenId = e.target.id
-//     let itemToShow = $("#" + clickedElemenId[3])
-//     let firstItem = carouselList.find("li:first");
-//     firstItem.before(itemToShow);
-//     activeDot();
-//   })
-// }
+$("#left").click(function() {
+  let target = $("#dots-list li.active").index();
+  if (target === 0) {
+    target = $("#dots-list li").length;
+  }
+  target = target - 1;
+  slide(target);
+  clearInt()
+});
 
-// function moveArrow(margin, side) {
-//   event.preventDefault();
-//   carousel(margin, side);
-// }
-$('#right').on('click', moveRight);
-
-$('#left').on('click', moveLeft);
-
-setInterval(moveRight, 4000);
