@@ -10,7 +10,7 @@ function slide(target) {
   }, 450);
 }
 
-function clearInt() {
+function pauseInt() {
   clearInterval(timer);
   timer = setInterval(function() {
     $('#right').trigger('click');
@@ -20,7 +20,7 @@ function clearInt() {
 $("#dots-list li").click(function() {
   const target = $(this).index();
   slide(target);
-  clearInt()
+  pauseInt()
 });
 
 
@@ -31,7 +31,7 @@ $("#right").click(function() {
   }
   target = target + 1
   slide(target);
-  clearInt()
+  pauseInt()
 });
 
 $("#left").click(function() {
@@ -41,6 +41,6 @@ $("#left").click(function() {
   }
   target = target - 1;
   slide(target);
-  clearInt()
+  pauseInt()
 });
 
